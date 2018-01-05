@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
@@ -22,11 +24,9 @@ import javax.json.JsonReader;
  */
 public class NewClass {
     public double rescate(String nombre) {
-        int uf, ivp,dolar,dolarIntercambio,euro,ipc,utm,imasec,tpm,libreCobre,tasaDesempleo,bitcoin;
-        String  uf1, ivp1,dolar1,dolarIntercambio1,euro1,ipc1,utm1,imasec1,tpm1,libreCobre1,tasaDesempleo1,bitcoin1;
-        //int valor=0;
+        Timestamp fecha= null;
         try {
-            URL url = new URL ("http://mindicador.cl/api");
+            URL url = new URL ("http://mindicador.cl/api/"+nombre+"/"+fecha);
             InputStream entrada = url.openStream();
             JsonReader reader = Json.createReader(entrada);
             JsonObject object = reader.readObject();
