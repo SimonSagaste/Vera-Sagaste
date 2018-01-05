@@ -12,6 +12,15 @@ package Modelo;
 public class indicador {
     private String nombre;
     private double valor;
+    private String fecha;
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
+    }
 
     public String getNombre() {
         return nombre;
