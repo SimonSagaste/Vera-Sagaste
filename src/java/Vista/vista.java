@@ -7,7 +7,7 @@ package Vista;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import Modelo.NewClass;
+import Modelo.VarPorcentual;
 import Modelo.insert;
 
 /**
@@ -105,9 +105,9 @@ public class vista extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre;
         double valor;
-        NewClass clase;
+        VarPorcentual clase;
         insert insert=new insert();
-        clase = new NewClass();
+        clase = new VarPorcentual();
         if (jComboBox1.getSelectedItem().toString()!="Seleccionar"){
         nombre= jComboBox1.getSelectedItem().toString();
         valor= clase.rescate(nombre);

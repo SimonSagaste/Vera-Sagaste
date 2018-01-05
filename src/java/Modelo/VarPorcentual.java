@@ -11,6 +11,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.json.Json;
@@ -22,9 +24,9 @@ import javax.json.JsonReader;
  *
  * @author simon
  */
-public class NewClass {
+public class VarPorcentual {
     public double rescate(String nombre) {
-        Timestamp fecha= null;
+        Calendar fecha;
         try {
             URL url = new URL ("http://mindicador.cl/api/"+nombre+"/"+fecha);
             InputStream entrada = url.openStream();
@@ -33,10 +35,10 @@ public class NewClass {
             double valor=(object.getJsonObject(nombre).getJsonNumber("valor").doubleValue());
             return(valor);
         } catch (MalformedURLException ex) {
-            Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         } catch (IOException ex) {
-            Logger.getLogger(NewClass.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);
             return 0;
         }
     }
