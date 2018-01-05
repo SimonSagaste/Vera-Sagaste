@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package rest;
+package Vista;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import Modelo.NewClass;
+import Modelo.insert;
 
 /**
  *
