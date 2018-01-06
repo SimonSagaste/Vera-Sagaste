@@ -34,7 +34,6 @@ public class VarPorcentual {
         try {
 //            Scanner teclado = new Scanner(System.in);
             System.out.println("Indicador:"+nombre);
-//            String indicador = teclado.next();
             URL url = new URL("https://mindicador.cl/api/"+nombre);
             InputStream is = url.openStream();
             JsonReader rdr = Json.createReader(is);
