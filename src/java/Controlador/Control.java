@@ -18,7 +18,8 @@ import java.util.logging.Logger;
  * @author simon
  */
 public class Control {
-    VarPorcentual consulta;
+    ArrayList listar = new ArrayList ();
+    VarPorcentual porc = new VarPorcentual ();
     
    public ArrayList diferenciar (String nombre){
     ArrayList listar = new ArrayList ();
@@ -31,9 +32,11 @@ public class Control {
        return listar;
        
     }
-   public ArrayList<indicador> Porcentaje(String nombre){
-       consulta = new VarPorcentual();
-       return consulta.Porcentaje(nombre);
-   }
+   public ArrayList porcentaje (String nombre){
+    
+    listar = porc.Porcentaje(nombre);
+       return listar;
+       
+    }
     
 }

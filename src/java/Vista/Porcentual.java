@@ -18,7 +18,7 @@ import Modelo.indicador;
  */
 public class Porcentual extends javax.swing.JFrame {
     DefaultTableModel table1;
-    Control consulta;
+    Control consulta= new Control();
     /**
      * Creates new form lista
      */
@@ -29,7 +29,7 @@ public class Porcentual extends javax.swing.JFrame {
         table1.addColumn("Fecha");
         table1.addColumn("Valor");
         jTable1.setModel(table1);
-        ArrayList<indicador> lista = consulta.Porcentaje(var1.getText()); 
+        ArrayList<indicador> lista = consulta.porcentaje(var1.getText()); 
         Object[] fila = new Object[2];
         for (int x=0;x<lista.size();x++){
             fila[0]=lista.get(x).getFecha();
@@ -40,18 +40,18 @@ public class Porcentual extends javax.swing.JFrame {
     }
     public Porcentual(String nombre) {
         initComponents();
-        consulta = new Control();
         table1 = new DefaultTableModel();
         table1.addColumn("Fecha");
         table1.addColumn("Valor");
         jTable1.setModel(table1);
         var1.setText(nombre);
         var1.setEnabled(false);
-        ArrayList<indicador> lista = consulta.Porcentaje(var1.getText()); 
+        ArrayList<indicador> lista = consulta.porcentaje(var1.getText()); 
         Object[] fila = new Object[2];
         for (int x=0;x<lista.size();x++){
             fila[0]=lista.get(x).getFecha();
             fila[1]=lista.get(x).getValor();
+            System.out.println(lista.get(x).getFecha());
             table1.addRow(fila);
         }jTable1.updateUI();
         JOptionPane.showMessageDialog(this, "Lista actualizada");
