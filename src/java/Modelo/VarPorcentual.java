@@ -27,12 +27,13 @@ import javax.json.JsonReader;
  * @author simon
  */
 public class VarPorcentual {
-    public static void main(String[] args) {
-        String fecha="";
-        String nombre="uf";
+    ArrayList<indicador> listado;
+    public ArrayList<indicador> Porcentaje(String nombre) {
+        indicador indicador = new indicador();
+        listado = new ArrayList();
         try {
 //            Scanner teclado = new Scanner(System.in);
-            System.out.println("Indicador:");
+            System.out.println("Indicador:"+nombre);
 //            String indicador = teclado.next();
             URL url = new URL("https://mindicador.cl/api/"+nombre);
             InputStream is = url.openStream();
@@ -40,34 +41,16 @@ public class VarPorcentual {
             JsonObject object = rdr.readObject();
             for(int i = 0; i <object.getJsonArray("serie").size(); i++){
                 
-                System.out.println("Valor"+(i+1)+":"+ object.getJsonArray("serie").getJsonObject(i).get("valor"));
-                System.out.println(object.getJsonArray("serie").getJsonObject(i).getString("fecha"));
+                indicador.setValor(Double.parseDouble("Valor"+(i+1)+":"+ object.getJsonArray("serie").getJsonObject(i).get("valor")));
+                indicador.setFecha(object.getJsonArray("serie").getJsonObject(i).getString("fecha"));
+                indicador.setNombre(nombre);
+                listado.add(indicador);
             }
         } catch (MalformedURLException ex) {
             Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
             Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    public ArrayList<Double> Porcentaje(String nombre) {
-        String fecha;
-        try {
-//            Scanner teclado = new Scanner(System.in);
-            System.out.println("Indicador:");
-//            String indicador = teclado.next();
-            URL url = new URL("https://mindicador.cl/api/"+nombre);
-            InputStream is = url.openStream();
-            JsonReader rdr = Json.createReader(is);
-            JsonObject object = rdr.readObject();
-            for(int i = 0; i <object.getJsonArray("serie").size(); i++){
-                
-                System.out.println("Valor"+(i+1)+":"+ object.getJsonArray("serie").getJsonObject(i).get("valor"));
-                System.out.println(object.getJsonArray("serie").getJsonObject(i).getString("fecha"));
-            }
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        return listado;
     }
 }
