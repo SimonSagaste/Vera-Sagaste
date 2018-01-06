@@ -144,9 +144,13 @@ public class vista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        JFrame agregar = new Porcentual();
+        if (!jComboBox1.getSelectedItem().toString().equals("Seleccionar")){
+        JFrame agregar = new Porcentual(jComboBox1.getSelectedItem().toString());
         agregar.setVisible(true);
         dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Seleccionar tipo de indicador");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -166,8 +170,7 @@ public class vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        JFrame agregar = new MenorValor;
-        ();
+        JFrame agregar = new MenorValor();
         agregar.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton7ActionPerformed
