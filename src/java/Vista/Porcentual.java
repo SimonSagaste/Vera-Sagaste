@@ -5,12 +5,12 @@
  */
 package Vista;
 
+import Controlador.Control;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Modelo.indicador;
-import Modelo.insert;
 
 /**
  *
@@ -18,20 +18,21 @@ import Modelo.insert;
  */
 public class Porcentual extends javax.swing.JFrame {
     DefaultTableModel table1;
-    insert metodo= new insert();
+    Control consulta;
     /**
      * Creates new form lista
      */
     public Porcentual() {
         initComponents();
+        consulta = new Control();
         table1 = new DefaultTableModel();
         table1.addColumn("Fecha");
         table1.addColumn("Valor");
         jTable1.setModel(table1);
-        ArrayList<indicador> lista = metodo.lista(); 
+        ArrayList<indicador> lista = consulta.Porcentaje(var1.getText()); 
         Object[] fila = new Object[2];
         for (int x=0;x<lista.size();x++){
-            fila[0]=lista.get(x).getNombre();
+            fila[0]=lista.get(x).getFecha();
             fila[1]=lista.get(x).getValor();
             table1.addRow(fila);
         }jTable1.updateUI();
@@ -39,14 +40,17 @@ public class Porcentual extends javax.swing.JFrame {
     }
     public Porcentual(String nombre) {
         initComponents();
+        consulta = new Control();
         table1 = new DefaultTableModel();
         table1.addColumn("Fecha");
         table1.addColumn("Valor");
         jTable1.setModel(table1);
-        ArrayList<indicador> lista = metodo.lista(); 
+        var1.setText(nombre);
+        var1.setEnabled(false);
+        ArrayList<indicador> lista = consulta.Porcentaje(var1.getText()); 
         Object[] fila = new Object[2];
         for (int x=0;x<lista.size();x++){
-            fila[0]=lista.get(x).getNombre();
+            fila[0]=lista.get(x).getFecha();
             fila[1]=lista.get(x).getValor();
             table1.addRow(fila);
         }jTable1.updateUI();
@@ -65,6 +69,7 @@ public class Porcentual extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        var1 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -88,6 +93,8 @@ public class Porcentual extends javax.swing.JFrame {
             }
         });
 
+        var1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,13 +106,17 @@ public class Porcentual extends javax.swing.JFrame {
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(165, 165, 165)
-                        .addComponent(jButton1)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(var1))))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(58, Short.MAX_VALUE)
+                .addContainerGap(12, Short.MAX_VALUE)
+                .addComponent(var1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addGap(37, 37, 37)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -161,5 +172,6 @@ public class Porcentual extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField var1;
     // End of variables declaration//GEN-END:variables
 }
