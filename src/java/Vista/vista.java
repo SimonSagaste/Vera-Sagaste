@@ -158,9 +158,13 @@ public class vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        JFrame agregar = new Diferencia();
+  if (!jComboBox1.getSelectedItem().toString().equals("Seleccionar")){
+        JFrame agregar = new Diferencia(jComboBox1.getSelectedItem().toString());
         agregar.setVisible(true);
         dispose();
+        }else{
+            JOptionPane.showMessageDialog(this, "Seleccionar tipo de indicador");
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed

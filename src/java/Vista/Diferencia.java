@@ -24,12 +24,9 @@ public class Diferencia extends javax.swing.JFrame {
     /**
      * Creates new form lista
      */
-    public Diferencia() {
-        initComponents();
- 
-    }
-    public void diferencia (String nombre){
-    
+
+    public  Diferencia (String nombre){
+      initComponents();
            table1 = new DefaultTableModel();
         table1.addColumn("Fecha");
         table1.addColumn("Valor");
@@ -44,6 +41,10 @@ public class Diferencia extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "Lista actualizada");
     
     
+    }
+
+    private Diferencia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     /**
      * This method is called from within the constructor to initialize the form.
