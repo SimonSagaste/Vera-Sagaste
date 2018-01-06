@@ -22,27 +22,33 @@ import javax.json.JsonReader;
  * @author LEARNING CENTER
  */
 public class mayor {
-    public ArrayList diferencias(String indicador) throws  IOException{
-     ArrayList <indicador> list = new ArrayList<>();
+    public indicador diferencias(String indicador) throws  IOException{
+        VarPorcentual var = new VarPorcentual ();
+               indicador indica = new indicador();
      ArrayList <indicador> list1 = new ArrayList<>();
+     list1 = var.Porcentaje(indicador);
     URL url = new URL("https://mindicador.cl/api/"+indicador);
     InputStream is = url.openStream();
     JsonReader rdr = Json.createReader(is);
     JsonObject object = rdr.readObject();
+     int f = 0;
     for(int i = 0; i <30; i++){
-            indicador indica = new indicador();
+       
+            if (list1.get(i).getValor()>=f){
+  
             Double a = Double.parseDouble(object.getJsonArray("serie").getJsonObject(30-i).get("valor").toString());
-            Double b = Double.parseDouble(object.getJsonArray("serie").getJsonObject(29-i).get("valor").toString());
+ 
             String fecha = object.getJsonArray("serie").getJsonObject(29-i).get("fecha").toString();
-            indica.setValor(b-a);
+            indica.setValor(a);
             indica.setFecha(fecha);
-            list.add(indica);
+       
             
             }
     
     
-        return list1;
+      
     
     }
-    
+        return indica;
+    } 
 }
