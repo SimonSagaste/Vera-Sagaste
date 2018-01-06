@@ -41,10 +41,11 @@ public class VarPorcentual {
             JsonObject object = rdr.readObject();
             for(int i = 0; i <30; i++){
                 indicador.setValor(Double.parseDouble(object.getJsonArray("serie").getJsonObject(30-i).get("valor").toString()));
-                indicador.setFecha(object.getJsonArray("serie").getJsonObject(30-i).getString("fecha"));
+                
+                indicador.setFecha(object.getJsonArray("serie").getJsonObject(30-i).get("fecha").toString());
                 indicador.setNombre(nombre);
                 listado.add(indicador);
-                System.out.println(indicador.getFecha());
+
             }
         } catch (MalformedURLException ex) {
             Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);
