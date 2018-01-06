@@ -5,6 +5,7 @@
  */
 package Vista;
 
+import Controlador.Control;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,16 +20,21 @@ import Modelo.insert;
 public class Diferencia extends javax.swing.JFrame {
     DefaultTableModel table1;
     insert metodo= new insert();
+    Control control = new Control();
     /**
      * Creates new form lista
      */
     public Diferencia() {
         initComponents();
-        table1 = new DefaultTableModel();
-        table1.addColumn("Nombre");
+ 
+    }
+    public void diferencia (String nombre){
+    
+           table1 = new DefaultTableModel();
+        table1.addColumn("Fecha");
         table1.addColumn("Valor");
         jTable1.setModel(table1);
-        ArrayList<indicador> lista = metodo.lista(); 
+        ArrayList<indicador> lista = control.diferenciar(nombre);
         Object[] fila = new Object[2];
         for (int x=0;x<lista.size();x++){
             fila[0]=lista.get(x).getNombre();
@@ -36,8 +42,9 @@ public class Diferencia extends javax.swing.JFrame {
             table1.addRow(fila);
         }jTable1.updateUI();
         JOptionPane.showMessageDialog(this, "Lista actualizada");
+    
+    
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
