@@ -34,7 +34,7 @@ public class Diferencia extends javax.swing.JFrame {
         ArrayList<indicador> lista = control.diferenciar(nombre);
         Object[] fila = new Object[2];
         for (int x=0;x<lista.size();x++){
-            fila[0]=lista.get(x).getNombre();
+            fila[0]=lista.get(x).getFecha();
             fila[1]=lista.get(x).getValor();
             table1.addRow(fila);
         }jTable1.updateUI();
