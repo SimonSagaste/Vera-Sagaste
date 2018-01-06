@@ -5,6 +5,10 @@
  */
 package Vista;
 
+import Controlador.Control;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -12,12 +16,22 @@ import javax.swing.JFrame;
  * @author simon
  */
 public class MayorValor extends javax.swing.JFrame {
-
+    Control control = new Control ();
     /**
      * Creates new form MayorValor
      */
-    public MayorValor() {
+    public MayorValor(String nombre) {
         initComponents();
+        try {
+            this.fecha.setText(control.mayor(nombre).getFecha());
+            this.valor.setText(String.valueOf(control.mayor(nombre).getValor()));
+        } catch (IOException ex) {
+            Logger.getLogger(MayorValor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private MayorValor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -30,6 +44,8 @@ public class MayorValor extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        fecha = new javax.swing.JTextField();
+        valor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -45,14 +61,25 @@ public class MayorValor extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(168, 168, 168)
-                .addComponent(jButton1)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(168, 168, 168)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(79, 79, 79)
+                        .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(79, 79, 79)
+                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(94, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(216, Short.MAX_VALUE))
         );
@@ -102,6 +129,8 @@ public class MayorValor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
+    private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }

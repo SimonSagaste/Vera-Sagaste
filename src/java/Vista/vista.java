@@ -168,7 +168,7 @@ public class vista extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        JFrame agregar = new MayorValor();
+        JFrame agregar = new MayorValor(jComboBox1.getSelectedItem().toString());
         agregar.setVisible(true);
         dispose();
     }//GEN-LAST:event_jButton6ActionPerformed

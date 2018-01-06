@@ -35,12 +35,14 @@ public class mayor {
     for(int i = 0; i <30; i++){
        
             if (list1.get(i).getValor()>=f){
-  
-            Double a = Double.parseDouble(object.getJsonArray("serie").getJsonObject(30-i).get("valor").toString());
+                    
+            Double a = Double.parseDouble(object.getJsonArray("serie").getJsonObject(i).get("valor").toString());
  
-            String fecha = object.getJsonArray("serie").getJsonObject(29-i).get("fecha").toString();
+            String fecha = object.getJsonArray("serie").getJsonObject(i).get("fecha").toString();
             indica.setValor(a);
+                System.out.println(a);
             indica.setFecha(fecha);
+                System.out.println(fecha);
        
             
             }
