@@ -31,11 +31,11 @@ public class mayor {
     InputStream is = url.openStream();
     JsonReader rdr = Json.createReader(is);
     JsonObject object = rdr.readObject();
-     int f = 0;
+    Double f;
     for(int i = 0; i <30; i++){
        
-            if (list1.get(i).getValor()>=f){
-                    
+            if (list1.get(i).getValor()>=list1.get(1).getValor()){
+                  f= list1.get(i).getValor();  
             Double a = Double.parseDouble(object.getJsonArray("serie").getJsonObject(i).get("valor").toString());
  
             String fecha = object.getJsonArray("serie").getJsonObject(i).get("fecha").toString();
