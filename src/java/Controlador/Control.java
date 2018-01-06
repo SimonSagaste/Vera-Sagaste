@@ -5,10 +5,28 @@
  */
 package Controlador;
 
+import Modelo.diferencia;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author simon
  */
 public class Control {
+    
+   public ArrayList diferenciar (String nombre){
+    ArrayList listar = new ArrayList ();
+    diferencia dif = new diferencia ();
+       try {
+           listar = dif.diferencias(nombre);
+       } catch (IOException ex) {
+           Logger.getLogger(Control.class.getName()).log(Level.SEVERE, null, ex);
+       }
+       return listar;
+       
+    }
     
 }
