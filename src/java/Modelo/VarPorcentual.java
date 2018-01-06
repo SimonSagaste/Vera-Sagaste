@@ -43,7 +43,7 @@ public class VarPorcentual {
                 Double a=(Double.parseDouble(object.getJsonArray("serie").getJsonObject(30-i).get("valor").toString()));
                 Double b=(Double.parseDouble(object.getJsonArray("serie").getJsonObject(29-i).get("valor").toString()));
                 Double c=(Double.parseDouble(object.getJsonArray("serie").getJsonObject(30).get("valor").toString()));
-                indicador.setFecha(object.getJsonArray("serie").getJsonObject(30-i).getString("fecha"));
+                indicador.setFecha(object.getJsonArray("serie").getJsonObject(30-i).getString("fecha").replace(".000Z",":00").replace("T05:"," "));
                 indicador.setNombre(nombre);
                 indicador.setValor((a-b)/c);
                 listado.add(indicador);

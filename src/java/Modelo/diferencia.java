@@ -32,7 +32,9 @@ public class diferencia {
             indicador indica = new indicador();
             Double a = Double.parseDouble(object.getJsonArray("serie").getJsonObject(30-i).get("valor").toString());
             Double b = Double.parseDouble(object.getJsonArray("serie").getJsonObject(29-i).get("valor").toString());
-            String fecha = object.getJsonArray("serie").getJsonObject(29-i).get("fecha").toString();
+            String fecha = object.getJsonArray("serie").getJsonObject(29-i).get("fecha").toString().replace(".000Z",":00").replace("T05:"," ").replace("\"","");
+            
+            System.out.println(fecha);
             indica.setValor(b-a);
             indica.setFecha(fecha);
             list.add(indica);
