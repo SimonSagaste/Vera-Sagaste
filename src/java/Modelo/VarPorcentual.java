@@ -39,12 +39,12 @@ public class VarPorcentual {
             InputStream is = url.openStream();
             JsonReader rdr = Json.createReader(is);
             JsonObject object = rdr.readObject();
-            for(int i = 0; i <object.getJsonArray("serie").size(); i++){
-                
-                indicador.setValor(Double.parseDouble("Valor"+(i+1)+":"+ object.getJsonArray("serie").getJsonObject(i).get("valor")));
-                indicador.setFecha(object.getJsonArray("serie").getJsonObject(i).getString("fecha"));
+            for(int i = 0; i <30; i++){
+                indicador.setValor(Double.parseDouble(object.getJsonArray("serie").getJsonObject(30-i).get("valor").toString()));
+                indicador.setFecha(object.getJsonArray("serie").getJsonObject(30-i).getString("fecha"));
                 indicador.setNombre(nombre);
                 listado.add(indicador);
+                System.out.println(indicador.getFecha());
             }
         } catch (MalformedURLException ex) {
             Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);

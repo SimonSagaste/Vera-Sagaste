@@ -5,7 +5,9 @@
  */
 package Controlador;
 
+import Modelo.VarPorcentual;
 import Modelo.diferencia;
+import Modelo.indicador;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -16,6 +18,7 @@ import java.util.logging.Logger;
  * @author simon
  */
 public class Control {
+    VarPorcentual consulta;
     
    public ArrayList diferenciar (String nombre){
     ArrayList listar = new ArrayList ();
@@ -28,5 +31,9 @@ public class Control {
        return listar;
        
     }
+   public ArrayList<indicador> Porcentaje(String nombre){
+       consulta = new VarPorcentual();
+       return consulta.Porcentaje(nombre);
+   }
     
 }
