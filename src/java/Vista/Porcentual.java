@@ -25,7 +25,22 @@ public class Porcentual extends javax.swing.JFrame {
     public Porcentual() {
         initComponents();
         table1 = new DefaultTableModel();
-        table1.addColumn("Nombre");
+        table1.addColumn("Fecha");
+        table1.addColumn("Valor");
+        jTable1.setModel(table1);
+        ArrayList<indicador> lista = metodo.lista(); 
+        Object[] fila = new Object[2];
+        for (int x=0;x<lista.size();x++){
+            fila[0]=lista.get(x).getNombre();
+            fila[1]=lista.get(x).getValor();
+            table1.addRow(fila);
+        }jTable1.updateUI();
+        JOptionPane.showMessageDialog(this, "Lista actualizada");
+    }
+    public Porcentual(String nombre) {
+        initComponents();
+        table1 = new DefaultTableModel();
+        table1.addColumn("Fecha");
         table1.addColumn("Valor");
         jTable1.setModel(table1);
         ArrayList<indicador> lista = metodo.lista(); 
