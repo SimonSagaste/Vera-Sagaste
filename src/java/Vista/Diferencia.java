@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import Modelo.indicador;
 import Modelo.insert;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 /**
  *
@@ -34,7 +36,9 @@ public class Diferencia extends javax.swing.JFrame {
         ArrayList<indicador> lista = control.diferenciar(nombre);
         Object[] fila = new Object[2];
         for (int x=0;x<lista.size();x++){
-            fila[0]=lista.get(x).getFecha();
+            Timestamp fecha= Timestamp.valueOf(lista.get(x).getFecha());
+            System.out.println(fecha);
+            fila[0]=new SimpleDateFormat("dd/MM/yyyy").format(fecha);
             fila[1]=lista.get(x).getValor();
             table1.addRow(fila);
         }jTable1.updateUI();
