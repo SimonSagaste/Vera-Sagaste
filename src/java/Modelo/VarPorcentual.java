@@ -29,7 +29,7 @@ import javax.json.JsonReader;
 public class VarPorcentual {
     ArrayList<indicador> listado;
     public ArrayList<indicador> Porcentaje(String nombre) {
-        indicador indicador = new indicador();
+        indicador indicador;
         listado = new ArrayList();
         try {
 //            Scanner teclado = new Scanner(System.in);
@@ -39,10 +39,13 @@ public class VarPorcentual {
             JsonReader rdr = Json.createReader(is);
             JsonObject object = rdr.readObject();
             for(int i = 0; i <30; i++){
-                indicador.setValor(Double.parseDouble(object.getJsonArray("serie").getJsonObject(30-i).get("valor").toString()));
-                
-                indicador.setFecha(object.getJsonArray("serie").getJsonObject(30-i).get("fecha").toString());
+                indicador = new indicador();
+                Double a=(Double.parseDouble(object.getJsonArray("serie").getJsonObject(30-i).get("valor").toString()));
+                Double b=(Double.parseDouble(object.getJsonArray("serie").getJsonObject(29-i).get("valor").toString()));
+                Double c=(Double.parseDouble(object.getJsonArray("serie").getJsonObject(30).get("valor").toString()));
+                indicador.setFecha(object.getJsonArray("serie").getJsonObject(30-i).getString("fecha"));
                 indicador.setNombre(nombre);
+                indicador.setValor((a-b)/c);
                 listado.add(indicador);
 
             }
