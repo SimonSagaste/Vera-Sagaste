@@ -9,6 +9,7 @@ import Modelo.VarPorcentual;
 import Modelo.diferencia;
 import Modelo.indicador;
 import Modelo.mayor;
+import Modelo.menor;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -46,4 +47,12 @@ public class Control {
        return major.diferencias(nombre);
        
     }
+       
+           public indicador menor (String nombre) throws IOException{
+           menor major = new menor();
+           
+       return major.diferencias(nombre);
+       
+    }
+       
 }

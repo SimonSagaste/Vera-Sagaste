@@ -5,6 +5,10 @@
  */
 package Vista;
 
+import Controlador.Control;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -13,13 +17,23 @@ import javax.swing.JFrame;
  */
 public class MenorValor extends javax.swing.JFrame {
 
+      Control control = new Control ();
     /**
      * Creates new form MayorValor
      */
-    public MenorValor() {
+    public MenorValor(String nombre) {
         initComponents();
+        try {
+            this.fecha.setText(control.mayor(nombre).getFecha());
+            this.valor.setText(String.valueOf(control.mayor(nombre).getValor()));
+        } catch (IOException ex) {
+            Logger.getLogger(MayorValor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
+    private MenorValor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,6 +44,8 @@ public class MenorValor extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
+        fecha = new javax.swing.JTextField();
+        valor = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -40,6 +56,10 @@ public class MenorValor extends javax.swing.JFrame {
             }
         });
 
+        fecha.setText("jTextField1");
+
+        valor.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -47,12 +67,22 @@ public class MenorValor extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(168, 168, 168)
                 .addComponent(jButton1)
-                .addContainerGap(169, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(68, 68, 68)
+                .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(101, 101, 101))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(23, 23, 23)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(216, Short.MAX_VALUE))
         );
@@ -103,6 +133,8 @@ public class MenorValor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField fecha;
     private javax.swing.JButton jButton1;
+    private javax.swing.JTextField valor;
     // End of variables declaration//GEN-END:variables
 }
