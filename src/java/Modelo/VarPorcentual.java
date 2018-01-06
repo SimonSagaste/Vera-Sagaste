@@ -47,7 +47,7 @@ public class VarPorcentual {
                 indicador.setNombre(nombre);
                 indicador.setValor((a-b)/c);
                 listado.add(indicador);
-//                System.out.println(indicador.getFecha());
+
             }
         } catch (MalformedURLException ex) {
             Logger.getLogger(VarPorcentual.class.getName()).log(Level.SEVERE, null, ex);
